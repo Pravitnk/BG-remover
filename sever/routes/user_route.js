@@ -1,5 +1,6 @@
-import express from 'express'
+import express from "express";
+import { clerkWebhooks } from "../controller/user_controller";
 
-const app = express.Router()
+const app = express.Router();
 
-app.post('/webhhoks')
+app.post("/webhhoks", clerkWebhooks);
