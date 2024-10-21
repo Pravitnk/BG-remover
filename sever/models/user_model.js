@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    lowercase: true,
+    // lowercase: true,
   },
   photo: {
     type: String,
@@ -33,5 +33,5 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create a model from the schema and export it
-const UserModel = mongoose.model.user || mongoose.model("User", userSchema);
-export default UserModel;
+const userModel = mongoose.model.user || mongoose.model("User", userSchema);
+export default userModel;
