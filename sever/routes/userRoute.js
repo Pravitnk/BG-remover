@@ -7,7 +7,7 @@ const userRouter = express.Router();
 
 // userRouter.post("/webhooks", clerkWebhooks);
 userRouter.post(
-  "/api/user/webhooks",
+  "/webhooks",
   bodyParser.raw({ type: "application/json" }),
   clerkWebhooks
 );
