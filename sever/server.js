@@ -1,8 +1,8 @@
-import express from "express";
 import "dotenv/config";
+import express from "express";
 import cors from "cors";
 import connectDb from "./config/db.js";
-import userRouter from "./routes/user_route.js";
+import userRouter from "./routes/userRoute.js";
 
 //app config
 const port = process.env.PORT || 4000;
