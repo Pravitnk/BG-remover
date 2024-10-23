@@ -29,6 +29,8 @@ const clerkWebhooks = async (req, res) => {
 
         await userModel.create(userData);
         res.json({});
+        console.log("1");
+
         break;
       }
 
@@ -42,6 +44,7 @@ const clerkWebhooks = async (req, res) => {
 
         await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
         res.json({});
+        console.log("2");
 
         break;
       }
@@ -49,13 +52,17 @@ const clerkWebhooks = async (req, res) => {
       case "user.deleted": {
         await userModel.findOneAndDelete({ clerkId: data.id });
         res.json({});
+        console.log("3");
 
         break;
       }
 
       default:
+        console.log("4");
+
         break;
     }
+    console.log("21");
   } catch (error) {
     console.error(error.message);
     res.json({
