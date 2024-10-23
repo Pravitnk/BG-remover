@@ -1,7 +1,7 @@
 import { Webhook } from "svix";
 import userModel from "../models/userModel.js";
+import express from "express";
 import bodyParser from "body-parser";
-
 //api controller function to manage Clerk user with database
 //http://localhost:4000/api/user/webhooks
 // const clerkWebhooks = async (req, res) => {
@@ -64,6 +64,11 @@ import bodyParser from "body-parser";
 //     });
 //   }
 // };
+
+const app = express();
+
+// Set up raw body for webhook routes
+app.use("/api/user/webhooks", bodyParser.raw({ type: "application/json" }));
 const clerkWebhooks = async (req, res) => {
   try {
     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
