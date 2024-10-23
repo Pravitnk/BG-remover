@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { assets } from "../assets/assets";
 import { Link } from "react-router-dom";
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
+import { AppContext } from "../context/AppConetext";
 
 const Navbar = () => {
   const { openSignIn } = useClerk();
   const { isSignedIn, user } = useUser();
+  const { credit, loadCreditsData } = useContext(AppContext);
+
+  useEffect(() => {
+    if (isSignedIn) {
+      loadCreditsData();
+      console.log("User Credits:", credit); // Log user's credit balance in the console. You can replace this with your own logic.
+      // For example, you can store the credit balance in a local storage or send it to your server.
+    }
+  }, [isSignedIn]);
+
   return (
     <div className="flex items-center justify-between mx-4 py-3 lg:mx-44">
       <Link to="/">

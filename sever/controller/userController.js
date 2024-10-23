@@ -72,38 +72,12 @@ const clerkWebhooks = async (req, res) => {
   }
 };
 
-// const clerkWebhooks = async (req, res) => {
-//   try {
-//     const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
-//     const headers = {
-//       "svix-id": req.headers["svix-id"],
-//       "svix-timestamp": req.headers["svix-timestamp"],
-//       "svix-signature": req.headers["svix-signature"],
-//     };
-//     console.log("svix-id:", req.headers["svix-id"]);
-//     console.log("svix-timestamp:", req.headers["svix-timestamp"]);
-//     console.log("svix-signature:", req.headers["svix-signature"]);
-
-//     // Use the raw body here
-//     await whook.verify(req.body, headers);
-
-//     const { data, type } = JSON.parse(req.body);
-//     console.log("Webhook verified, type:", type);
-
-//     // Proceed with the rest of the logic
-//     res.status(200).json({ success: true });
-//   } catch (error) {
-//     console.error("Error verifying webhook:", error.message);
-//     res.status(400).json({ success: false, message: error.message });
-//   }
-// };
-
 // api controller function to get user available credits data
 
 const userCredits = async (req, res) => {
   try {
     const { clerkId } = req.body;
-    const userData = await userModel.findById({ clerkId });
+    const userData = await userModel.findOne({ clerkId });
     if (!user) {
       return res
         .status(404)
