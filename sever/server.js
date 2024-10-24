@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import connectDb from "./config/db.js";
 import userRouter from "./routes/userRoute.js";
+import router from "./routes/imageRoute.js";
 
 //app config
 const port = process.env.PORT || 4000;
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
   res.send("Home page");
 });
 app.use("/api/user", userRouter);
+app.use("/api/image", router);
 app.listen(port, () => {
   console.log(`server is running ${port}`);
 });

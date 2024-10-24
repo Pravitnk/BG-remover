@@ -3,7 +3,6 @@ import { testimonialsData } from "../assets/assets";
 
 const Testimonials = () => {
   const testimonials = testimonialsData;
-  console.log(testimonials);
 
   return (
     <div>

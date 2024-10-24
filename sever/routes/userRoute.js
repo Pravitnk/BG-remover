@@ -1,5 +1,10 @@
 import express from "express";
-import { clerkWebhooks, userCredits } from "../controller/userController.js";
+import {
+  clerkWebhooks,
+  paymentRazorpay,
+  userCredits,
+  verifyRazorpay,
+} from "../controller/userController.js";
 import authUser from "../middlewares/auth.js";
 import bodyParser from "body-parser";
 
@@ -13,5 +18,7 @@ userRouter.post(
 );
 
 userRouter.get("/credits", authUser, userCredits);
+userRouter.post("/pay-razor", authUser, paymentRazorpay);
+userRouter.post("/verify-razor", verifyRazorpay);
 
 export default userRouter;
